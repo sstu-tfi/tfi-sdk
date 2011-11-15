@@ -15,7 +15,7 @@ import ru.sstu.dao.Identifiable;
  * <code>Group</code> class.
  *
  * @author Denis_Murashev
- * @since DAO 1.0.1
+ * @since DAO 1.0
  */
 @Entity
 @Table(name = "GROUPS")

@@ -8,7 +8,7 @@ import org.apache.commons.math.optimization.univariate
 		.AbstractUnivariateRealOptimizer;
 
 /**
- * Class <code>GoldenSectionOptimizer</code> optimize functions using "golden
+ * <code>GoldenSectionOptimizer</code> class optimize functions using "golden
  * section" method.
  *
  * @author Denis A. Murashev

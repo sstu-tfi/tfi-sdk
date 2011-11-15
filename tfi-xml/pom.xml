@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-xml</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>TFI XML utility project</name>
 	<dependencies>
 		<dependency>

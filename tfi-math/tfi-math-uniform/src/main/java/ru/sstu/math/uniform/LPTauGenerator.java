@@ -3,7 +3,7 @@ package ru.sstu.math.uniform;
 import ru.sstu.math.util.BitsUtil;
 
 /**
- * Class <code>LPTauGenerator</code> represents implementation of LPTau
+ * <code>LPTauGenerator</code> class represents implementation of LPTau
  * sequences for many dimensions.
  *
  * @author Denis A. Murashev

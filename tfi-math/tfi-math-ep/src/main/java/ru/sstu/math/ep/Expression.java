@@ -5,11 +5,11 @@ import java.util.Map;
 import org.apache.commons.math.MathException;
 
 /**
- * Class <code>Expression</code> holds mathematical expression as tree,
+ * <code>Expression</code> class holds mathematical expression as tree,
  * can be evaluated, and can be differentiated.
  *
  * @author Denis A. Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public final class Expression {
 

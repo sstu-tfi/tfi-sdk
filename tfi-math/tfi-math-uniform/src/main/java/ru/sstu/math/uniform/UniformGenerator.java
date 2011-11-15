@@ -3,7 +3,7 @@ package ru.sstu.math.uniform;
 import org.apache.commons.math.random.RandomVectorGenerator;
 
 /**
- * Class <code>UniformGenerator</code> generates uniformly distributed sequences
+ * <code>UniformGenerator</code> class generates uniformly distributed sequences
  * for many dimensional spaces.
  *
  * @author Denis A. Murashev

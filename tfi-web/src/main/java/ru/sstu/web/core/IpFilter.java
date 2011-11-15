@@ -21,7 +21,7 @@ import javax.servlet.ServletResponse;
  * </ol>
  *
  * @author Denis_Murashev
- * @since Web 1.2
+ * @since Web 1.0
  */
 public class IpFilter implements Filter {
 

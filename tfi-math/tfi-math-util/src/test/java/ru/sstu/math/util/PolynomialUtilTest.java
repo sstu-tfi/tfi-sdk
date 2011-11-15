@@ -5,7 +5,7 @@ import org.apache.commons.math.analysis.polynomials.PolynomialFunction;
 import junit.framework.TestCase;
 
 /**
- * Class <code>PolynomTest</code> is unit test for {@link PolynomialUtil} class.
+ * <code>PolynomTest</code> class is unit test for {@link PolynomialUtil} class.
  *
  * @author Denis A. Murashev
  * @since Math 2.0

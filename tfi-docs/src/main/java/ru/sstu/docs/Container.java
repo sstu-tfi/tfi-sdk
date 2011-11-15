@@ -11,7 +11,7 @@ import java.util.ListIterator;
  * @author Denis_Murashev
  *
  * @param <T> node type
- * @since Docs 2.0
+ * @since Docs 1.0
  */
 class Container<T extends Node> implements List<T> {
 

@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
  * <code>XPathUtil</code> class is utility class for XPath Expressions.
  *
  * @author Denis Murashev
- * @since XML 1.1
+ * @since XML 1.0
  */
 public final class XPathUtil {
 

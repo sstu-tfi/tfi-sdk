@@ -10,7 +10,7 @@ import junit.framework.TestCase;
  *
  * @author Denis A. Murashev
  * @author Dmitry_Petrov
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class ExpressionTest extends TestCase {
 
@@ -18,7 +18,6 @@ public class ExpressionTest extends TestCase {
 	 * Tests {@link Expression#simplify()} method.
 	 *
 	 * @throws Exception if some error occurs
-	 * @since Math 2.0
 	 */
 	public void testSimplify() throws Exception {
 		Parser parser = new Parser();
@@ -40,7 +39,6 @@ public class ExpressionTest extends TestCase {
 	 * Tests {@link Expression#derivative(String)} method.
 	 *
 	 * @throws Exception if some error occurs
-	 * @since Math 2.0
 	 */
 	public void testDerivative() throws Exception {
 		Parser parser = new Parser();

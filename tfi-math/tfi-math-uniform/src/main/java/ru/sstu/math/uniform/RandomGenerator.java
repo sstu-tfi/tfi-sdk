@@ -3,7 +3,7 @@ package ru.sstu.math.uniform;
 import java.util.Random;
 
 /**
- * Class <code>RandomGenerator</code> is a simple random generator.
+ * <code>RandomGenerator</code> class is a simple random generator.
  *
  * @author Denis A. Murashev
  * @since Math 1.0

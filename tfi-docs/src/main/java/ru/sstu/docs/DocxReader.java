@@ -37,7 +37,7 @@ import ru.sstu.xml.XslUtil;
  * <code>DocxReader</code> class reads MS Word 2007 format.
  *
  * @author Denis A. Murashev
- * @since Docs 2.0
+ * @since Docs 1.0
  */
 public class DocxReader implements DocumentReader {
 

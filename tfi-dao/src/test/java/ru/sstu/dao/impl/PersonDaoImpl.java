@@ -12,7 +12,7 @@ import ru.sstu.dao.domain.Person;
  * <code>PersonDaoImpl</code> class.
  *
  * @author Denis_Murashev
- * @since DAO 1.0.1
+ * @since DAO 1.0
  */
 @Repository("personDao")
 class PersonDaoImpl extends AbstractDao<Person> {

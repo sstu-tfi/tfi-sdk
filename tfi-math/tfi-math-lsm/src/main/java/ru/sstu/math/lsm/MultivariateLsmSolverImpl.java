@@ -13,7 +13,7 @@ import org.apache.commons.math.optimization.RealPointValuePair;
  * {@link MultivariateLsmSolver} interface.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class MultivariateLsmSolverImpl implements MultivariateLsmSolver {
 

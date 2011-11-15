@@ -8,10 +8,10 @@ import org.apache.commons.math.linear.RealMatrix;
 import org.apache.log4j.Logger;
 
 /**
- * Class <code>MatrixUtilTest</code> is unit test for {@link MatrixUtil} class.
+ * <code>MatrixUtilTest</code> class is unit test for {@link MatrixUtil} class.
  *
  * @author Denis A. Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class MatrixUtilTest extends TestCase {
 

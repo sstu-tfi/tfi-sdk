@@ -25,8 +25,6 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 
 	/**
 	 * Initializes DAO properties.
-	 *
-	 * @since DAO 1.1
 	 */
 	protected AbstractDao() {
 		this.type = (Class<?>) ((ParameterizedType) getClass()
@@ -192,7 +190,6 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	 * Provides entity's class.
 	 *
 	 * @return class
-	 * @since DAO 1.1 the method is not abstract
 	 */
 	protected Class<?> getType() {
 		return type;

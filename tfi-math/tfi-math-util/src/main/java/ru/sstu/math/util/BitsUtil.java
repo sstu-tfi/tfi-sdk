@@ -1,7 +1,7 @@
 package ru.sstu.math.util;
 
 /**
- * Class <code>BitsUtil</code> contains of utility methods for working with
+ * <code>BitsUtil</code> class contains of utility methods for working with
  * bits in integer numbers.
  *
  * @author Denis A. Murashev

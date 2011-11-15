@@ -3,7 +3,7 @@ package ru.sstu.math.util;
 import java.util.Locale;
 
 /**
- * Class <code>NumberFormatUtil</code> helps to convert numbers to text.
+ * <code>NumberFormatUtil</code> class helps to convert numbers to text.
  *
  * @author Denis A. Murashev
  * @since Math 1.0

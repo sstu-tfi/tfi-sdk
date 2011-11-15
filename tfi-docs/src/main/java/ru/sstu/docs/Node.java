@@ -80,7 +80,6 @@ public interface Node {
 	 *
 	 * @param reader document reader
 	 * @throws DocumentException if some error occurs
-	 * @since Doc 2.0
 	 */
 	void postProcess(DocumentReader reader) throws DocumentException;
 }

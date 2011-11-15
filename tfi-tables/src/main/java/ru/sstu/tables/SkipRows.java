@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
  * <code>SkipRows</code> annotation sets count of table rows to be skipped.
  *
  * @author Denis_Murashev
- * @since Tables 1.1
+ * @since Tables 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SkipRows {

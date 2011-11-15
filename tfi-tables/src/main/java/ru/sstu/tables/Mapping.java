@@ -53,7 +53,6 @@ public abstract class Mapping<T> {
 
 	/**
 	 * Count of first rows to be skipped.
-	 * @since Tables 1.1
 	 */
 	private int skipRows;
 
@@ -76,7 +75,6 @@ public abstract class Mapping<T> {
 
 	/**
 	 * @return the tableIndex
-	 * @since Tables 1.1
 	 */
 	public int getTableIndex() {
 		return tableIndex;
@@ -84,7 +82,6 @@ public abstract class Mapping<T> {
 
 	/**
 	 * @param tableIndex the tableIndex to set
-	 * @since Tables 1.1
 	 */
 	public void setTableIndex(int tableIndex) {
 		this.tableIndex = tableIndex;
@@ -92,7 +89,6 @@ public abstract class Mapping<T> {
 
 	/**
 	 * @return the skipRows
-	 * @since Tables 1.1
 	 */
 	public int getSkipRows() {
 		return skipRows;
@@ -100,7 +96,6 @@ public abstract class Mapping<T> {
 
 	/**
 	 * @param skipRows the skipRows to set
-	 * @since Tables 1.1
 	 */
 	public void setSkipRows(int skipRows) {
 		this.skipRows = skipRows;

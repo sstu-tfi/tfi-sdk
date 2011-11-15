@@ -1,7 +1,7 @@
 package ru.sstu.math.optim;
 
 /**
- * Interface <code>Constraint</code> represents constraint for optimization.
+ * <code>Constraint</code> interface represents constraint for optimization.
  *
  * @author Denis A. Murashev
  * @since Math 1.0

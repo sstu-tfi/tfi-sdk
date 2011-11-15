@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * </ol>
  *
  * @author Denis_Murashev
- * @since Web 1.1
+ * @since Web 1.0
  */
 public class SessionTimeoutFilter implements Filter {
 

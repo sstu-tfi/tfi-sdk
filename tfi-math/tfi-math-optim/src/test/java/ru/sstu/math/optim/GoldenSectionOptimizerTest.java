@@ -7,7 +7,7 @@ import org.apache.commons.math.optimization.GoalType;
 import org.apache.commons.math.optimization.UnivariateRealOptimizer;
 
 /**
- * Class <code>GoldenSectionOptimizerTest</code> tests
+ * <code>GoldenSectionOptimizerTest</code> class tests
  * {@link GoldenSectionOptimizer} class.
  *
  * @author Denis A. Murashev

@@ -12,7 +12,7 @@ import org.apache.commons.math.linear.RealMatrix;
  * {@link UnivariateLsmSolver} interface.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class UnivariateLsmSolverImpl implements UnivariateLsmSolver {
 
