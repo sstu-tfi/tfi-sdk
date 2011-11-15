@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fonts>
+	<font>
+		<name>Times New Roman</name>
+		<path>src/test/resources/fonts/times.ttf</path>
+	</font>
+	<font>
+		<name>Courier New</name>
+		<path>src/test/resources/fonts/cour.ttf</path>
+	</font>
+	<font>
+		<name>Arial</name>
+		<path>src/test/resources/fonts/arial.ttf</path>
+	</font>
+	<font>
+		<name>Verdana</name>
+		<path>src/test/resources/fonts/verdana.ttf</path>
+	</font>
+</fonts>
