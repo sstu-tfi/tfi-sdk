@@ -10,7 +10,7 @@ import org.apache.commons.math.MathException;
  * <code>AbstractNode</code> class represents abstract node in expression.
  *
  * @author Denis A. Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 abstract class AbstractNode implements Serializable {
 
@@ -86,7 +86,6 @@ abstract class AbstractNode implements Serializable {
 	 * Provides dependencies variables names.
 	 *
 	 * @return string names of variables of the node
-	 * @since Math 2.0
 	 */
 	protected abstract Set<String> getVariables();
 

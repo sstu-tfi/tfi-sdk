@@ -8,7 +8,7 @@ import junit.framework.TestCase;
  * <code>RtfWriterTest</code> class is unit test for {@link RtfWriter}.
  *
  * @author Denis_Murashev
- * @since Docs 2.0.1
+ * @since Docs 1.0
  */
 public class RtfWriterTest extends TestCase {
 

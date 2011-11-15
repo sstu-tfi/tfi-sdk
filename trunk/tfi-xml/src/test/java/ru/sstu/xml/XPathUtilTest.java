@@ -6,10 +6,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * Class <code>XPathUtilTest</code> is unit test for <code>XPathUtil</code>.
+ * <code>XPathUtilTest</code> class is unit test for <code>XPathUtil</code>.
  *
  * @author Denis A. Murashev
- * @since 1.1
+ * @since 1.0
  */
 public class XPathUtilTest extends TestCase {
 

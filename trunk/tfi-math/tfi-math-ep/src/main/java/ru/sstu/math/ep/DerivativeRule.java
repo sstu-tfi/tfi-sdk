@@ -8,7 +8,7 @@ import org.apache.commons.math.MathException;
  *
  * @author Denis_Murashev
  * @param <T> concrete expression node
- * @since Math 2.0
+ * @since Math 1.0
  */
 interface DerivativeRule<T extends AbstractNode> {
 

@@ -7,7 +7,7 @@ import org.apache.commons.math.analysis.polynomials.PolynomialFunction;
  * {@link PolynomialFunction} class.
  *
  * @author Denis A. Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public final class PolynomialUtil {
 

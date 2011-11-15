@@ -9,7 +9,7 @@ import org.apache.commons.math.optimization.GoalType;
  * Unit tests for {@link BoxOptimizer} class.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class BoxOptimizerTest extends TestCase {
 

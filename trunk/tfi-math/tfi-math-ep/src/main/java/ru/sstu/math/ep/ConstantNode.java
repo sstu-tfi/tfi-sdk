@@ -7,7 +7,7 @@ import java.util.Set;
  * <code>ConstantNode</code> class is used for constant nodes.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 final class ConstantNode extends ValueNode {
 

@@ -21,7 +21,7 @@ import ru.sstu.dao.domain.Person;
  * <code>AbstractDaoTest</code> class is unit test for {@link AbstractDao}.
  *
  * @author Denis_Murashev
- * @since DAO 1.0.1
+ * @since DAO 1.0
  */
 @SpringApplicationContext("test-beans.xml")
 public class AbstractDaoTest extends UnitilsJUnit4 {
@@ -138,7 +138,6 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	 * Tests {@link AbstractDao#save(List)} method.
 	 *
 	 * @throws Exception if some error occurs
-	 * @since DAO 1.1
 	 */
 	@Test
 	@DataSet("/dataset.xml")
@@ -199,7 +198,6 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	 * Just for unit test code simplification.
 	 *
 	 * @author Denis_Murashev
-	 * @since DAO 1.0.1
 	 */
 	private static final class GroupHolder {
 
@@ -222,7 +220,6 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	 * Just for unit test code simplification.
 	 *
 	 * @author Denis_Murashev
-	 * @since DAO 1.0.1
 	 */
 	private static final class PersonHolder {
 

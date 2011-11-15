@@ -9,7 +9,7 @@ import java.util.Set;
  * Variable node.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 final class VariableNode extends ValueNode {
 

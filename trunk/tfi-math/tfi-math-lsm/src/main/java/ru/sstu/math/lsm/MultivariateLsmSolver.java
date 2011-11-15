@@ -5,11 +5,11 @@ import org.apache.commons.math.analysis.MultivariateRealFunction;
 import org.apache.commons.math.optimization.RealPointValuePair;
 
 /**
- * <code>MultivariateLsmSolver</code> searches for multivariate fitting function
- * using Least Square Method.
+ * <code>MultivariateLsmSolver</code> interface searches for multivariate
+ * fitting function using Least Square Method.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public interface MultivariateLsmSolver {
 

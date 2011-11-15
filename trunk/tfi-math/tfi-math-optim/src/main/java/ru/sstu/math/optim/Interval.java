@@ -1,7 +1,7 @@
 package ru.sstu.math.optim;
 
 /**
- * Class <code>Interval</code> represents 1-dimensional interval.
+ * <code>Interval</code> class represents 1-dimensional interval.
  *
  * @author Denis A. Murashev
  * @since Math 1.0

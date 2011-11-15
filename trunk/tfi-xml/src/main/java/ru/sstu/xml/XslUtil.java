@@ -48,7 +48,6 @@ public final class XslUtil {
 	 * @param xsl source with XSL
 	 * @param out transformation result
 	 * @throws XmlException if cannot transform
-	 * @since XML 2.0
 	 */
 	public static void transform(Source xml, Source xsl, Result out)
 			throws XmlException {

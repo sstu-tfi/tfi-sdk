@@ -5,11 +5,11 @@ import org.apache.commons.math.analysis.UnivariateRealFunction;
 import junit.framework.TestCase;
 
 /**
- * <code>UnivariateLsmSolverTest</code> contains unit tests for
+ * <code>UnivariateLsmSolverTest</code> class contains unit tests for
  * {@link UnivariateLsmSolver}.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class UnivariateLsmSolverTest extends TestCase {
 

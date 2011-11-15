@@ -16,7 +16,7 @@ import org.apache.commons.math.random.RandomVectorGenerator;
 import ru.sstu.math.uniform.UniformGenerator;
 
 /**
- * Class <code>BoxOptimizer</code> is the optimizer engine for Box method.
+ * <code>BoxOptimizer</code> class is the optimizer engine for Box method.
  *
  * @author Denis A. Murashev
  * @since Math 1.0

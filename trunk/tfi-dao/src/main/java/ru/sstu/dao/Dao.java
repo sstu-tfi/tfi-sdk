@@ -22,7 +22,6 @@ public interface Dao<T extends Identifiable> extends ReadOnlyDao<T> {
 	 * <code>save</code> method saves list of entities.
 	 *
 	 * @param entities entities for saving
-	 * @since DAO 1.1
 	 */
 	void save(List<T> entities);
 
@@ -44,7 +43,6 @@ public interface Dao<T extends Identifiable> extends ReadOnlyDao<T> {
 	 * <code>delete</code> method removes existing entities.
 	 *
 	 * @param entities entities to be deleted
-	 * @since DAO 1.1
 	 */
 	void delete(List<T> entities);
 }

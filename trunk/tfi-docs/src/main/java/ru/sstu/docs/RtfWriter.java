@@ -6,7 +6,7 @@ import java.io.OutputStream;
  * <code>RtfWriter</code> class writes {@link Document} to RTF file.
  *
  * @author Denis A. Murashev
- * @since Docs 2.0
+ * @since Docs 1.0
  */
 public class RtfWriter extends TextWriter {
 

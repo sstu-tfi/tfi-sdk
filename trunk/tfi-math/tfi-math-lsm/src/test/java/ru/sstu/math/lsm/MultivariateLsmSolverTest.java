@@ -6,11 +6,11 @@ import org.apache.commons.math.analysis.MultivariateRealFunction;
 import org.apache.commons.math.optimization.RealPointValuePair;
 
 /**
- * <code>MultivariateLsmSolverTest</code> contains unit tests for
+ * <code>MultivariateLsmSolverTest</code> class contains unit tests for
  * {@link MultivariateLsmSolver}.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 public class MultivariateLsmSolverTest extends TestCase {
 

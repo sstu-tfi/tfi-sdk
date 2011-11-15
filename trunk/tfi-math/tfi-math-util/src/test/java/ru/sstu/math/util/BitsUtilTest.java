@@ -3,7 +3,7 @@ package ru.sstu.math.util;
 import junit.framework.TestCase;
 
 /**
- * Class <code>BitsUtilTest</code> is unit test for {@link BitsUtil} class.
+ * <code>BitsUtilTest</code> class is unit test for {@link BitsUtil} class.
  *
  * @author Denis Murashev
  * @since Math 1.0

@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-tables</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>Electronic tables support</name>
 	<description>Electronic tables support</description>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>ru.sstu.tfi.sdk</groupId>
 			<artifactId>tfi-xml</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

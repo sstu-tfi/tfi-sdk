@@ -8,7 +8,7 @@ import junit.framework.TestCase;
  * <code>PdfWriterTest</code> class is unit test for {@link PdfWriter}.
  *
  * @author Denis_Murashev
- * @since Docs 2.0.1
+ * @since Docs 1.0
  */
 public class PdfWriterTest extends TestCase {
 

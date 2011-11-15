@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
  * source to be used. Indexes start with 0.
  *
  * @author Denis_Murashev
- * @since Tables 1.1
+ * @since Tables 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TableIndex {

@@ -7,7 +7,7 @@ import java.util.Set;
  * <code>Constants</code> class provides constants for ru.sstu.math.ep package.
  *
  * @author Denis_Murashev
- * @since Math 2.0
+ * @since Math 1.0
  */
 final class Constants {
 

@@ -6,7 +6,7 @@ import junit.framework.TestCase;
  * <code>DocxReaderTest</code> class is unit test for {@link DocxReader}.
  *
  * @author Denis_Murashev
- * @since Docs 2.0.1
+ * @since Docs 1.0
  */
 public class DocxReaderTest extends TestCase {
 
