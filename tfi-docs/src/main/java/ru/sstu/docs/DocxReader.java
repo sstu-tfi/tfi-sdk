@@ -67,7 +67,7 @@ public class DocxReader implements DocumentReader {
 	 * XSL script for converting from Open Math Markup Language
 	 * to Math Markup Language.
 	 */
-	private static final String XSL_OMML2MML = "/xsl/OMML2MML.XSL";
+	private static final String XSL_OMML2MML = "/xsl/omml2mml.xsl";
 
 	/**
 	 * Document.

@@ -9,7 +9,6 @@
 	<packaging>pom</packaging>
 	<name>TFI Software Development Kit Library</name>
 	<modules>
-		<module>build-tools</module>
 		<module>tfi-dao</module>
 		<module>tfi-docs</module>
 		<module>tfi-math</module>
