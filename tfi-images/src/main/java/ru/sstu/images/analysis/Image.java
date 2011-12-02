@@ -187,4 +187,36 @@ public class Image {
 	public void setBrightness(int x, int y, float value) {
 		raster.setSample(x, y, 0, (int) (value * MAX_COLOR));
 	}
+
+	/**
+	 * Provides pixels matrix for the image.
+	 *
+	 * @return pixels
+	 */
+	public int[][] getPixels() {
+		int width = getWidth();
+		int height = getHeight();
+		int[][] pixels = new int[width][height];
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				pixels[i][j] = getColor(i, j);
+			}
+		}
+		return pixels;
+	}
+
+	/**
+	 * Sets pixels to the image.
+	 *
+	 * @param pixels pixels matrix
+	 */
+	public void setPixels(int[][] pixels) {
+		int height = Math.min(getHeight(), pixels.length);
+		int width = Math.min(getWidth(), pixels[0].length);
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				setColor(i, j, pixels[i][j]);
+			}
+		}
+	}
 }
