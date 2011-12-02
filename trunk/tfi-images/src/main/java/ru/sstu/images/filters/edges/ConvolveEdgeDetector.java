@@ -2,30 +2,20 @@ package ru.sstu.images.filters.edges;
 
 import java.awt.image.Kernel;
 
-import ru.sstu.images.analysis.Image;
 import ru.sstu.images.filters.AddFilter;
 import ru.sstu.images.filters.ConvolveFilter;
 import ru.sstu.images.filters.Filter;
 
 /**
- * <code>EdgeDetector</code> class is used for edge detection in images.
+ * <code>ConvolveEdgeDetector</code> class is used for edge detection in images.
+ * The main feature of this detector is using of convolution matrix.
  *
  * @author Denis_Murashev
  * @since Images 1.0
  */
-public abstract class EdgeDetector implements Filter {
+public abstract class ConvolveEdgeDetector extends EdgeDetector {
 
 	@Override
-	public Image filter(Image image) {
-		Filter addFilter = new AddFilter(vertical(), horizontal());
-		return addFilter.filter(image);
-	}
-
-	/**
-	 * Provides filter for vertical edge detection.
-	 *
-	 * @return {@link Filter}
-	 */
 	public Filter vertical() {
 		Kernel vertical = KernelUtil.createKernel(getVerticalMatrix());
 		if (isSymmetric()) {
@@ -38,11 +28,7 @@ public abstract class EdgeDetector implements Filter {
 		return new AddFilter(left, right);
 	}
 
-	/**
-	 * Provides filter for horizontal edge detection.
-	 *
-	 * @return {@link Filter}
-	 */
+	@Override
 	public Filter horizontal() {
 		float[] matrix = KernelUtil.rotateRight90(getVerticalMatrix());
 		Kernel horizontal = KernelUtil.createKernel(matrix);

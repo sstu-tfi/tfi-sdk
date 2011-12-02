@@ -20,4 +20,16 @@ public class ConvolveFilter extends RasterFilter {
 	public ConvolveFilter(Kernel kernel) {
 		super(new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null));
 	}
+
+	/**
+	 * Initializes filter with given kernel.
+	 *
+	 * @param kernel    convolution matrix kernel
+	 * @param cleanEdge true if image edge should be zero filled
+	 */
+	public ConvolveFilter(Kernel kernel, boolean cleanEdge) {
+		super(new ConvolveOp(kernel,
+				cleanEdge ? ConvolveOp.EDGE_ZERO_FILL : ConvolveOp.EDGE_NO_OP,
+				null));
+	}
 }
