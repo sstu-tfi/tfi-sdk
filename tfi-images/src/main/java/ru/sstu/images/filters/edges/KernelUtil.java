@@ -2,7 +2,7 @@ package ru.sstu.images.filters.edges;
 
 import java.awt.image.Kernel;
 
-class KernelUtil {
+final class KernelUtil {
 
 	private static final int SIZE = 3;
 
@@ -13,6 +13,9 @@ class KernelUtil {
 	private static final int[] ROTATE_LEFT_90 = {2, 5, 8, 1, 4, 7, 0, 3, 6};
 
 	private static final int[] ROTATE_RIGHT_90 = {6, 3, 0, 7, 4, 1, 8, 5, 2};
+
+	private static final String ERROR_SIZE_MESSAGE
+			= "Only 3x3 kernels supported";
 
 	private KernelUtil() {
 	}
@@ -25,7 +28,7 @@ class KernelUtil {
 	 */
 	public static Kernel createKernel(float[] matrix) {
 		if (matrix.length != SIZE * SIZE) {
-			throw new IllegalArgumentException("Only 3x3 kernels supported");
+			throw new IllegalArgumentException(ERROR_SIZE_MESSAGE);
 		}
 		return new Kernel(SIZE, SIZE, matrix);
 	}
@@ -72,7 +75,7 @@ class KernelUtil {
 
 	private static float[] process(float[] origin, int[] indeces) {
 		if (origin.length != SIZE * SIZE) {
-			throw new IllegalArgumentException("Only 3x3 kernels supported");
+			throw new IllegalArgumentException(ERROR_SIZE_MESSAGE);
 		}
 		float[] data = new float[origin.length];
 		for (int i = 0; i < data.length; i++) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Checkstyle-Configuration: TFI checks
+    Checkstyle-Configuration: Common checks
     Description: none
 -->
 <!DOCTYPE module [
@@ -41,7 +41,6 @@
 		<module name="JavadocVariable">
 			<property name="scope" value="protected"/>
 		</module>
-		<module name="JavadocStyle"/>
 		<module name="ConstantName"/>
 		<module name="LocalFinalVariableName"/>
 		<module name="LocalVariableName"/>
@@ -149,7 +148,6 @@
 			<property name="max" value="4"/>
 		</module>
 		<module name="InnerTypeLast"/>
-		<module name="ExplicitInitialization"/>
 		<module name="RegexpSinglelineJava">
 			<property name="format" value="^*\.printStackTrace.*$"/>
 		</module>
