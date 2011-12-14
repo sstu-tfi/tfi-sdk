@@ -98,8 +98,8 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 			Assert.assertEquals(PERSONS[i].person, persons.get(i));
 		}
 		final long id = 1;
-		Assert.assertEquals(GROUPS[0].group, groupDao.find(id));
-		Assert.assertEquals(PERSONS[0].person, personDao.find(id));
+		Assert.assertEquals(GROUPS[0].group, groupDao.findById(id));
+		Assert.assertEquals(PERSONS[0].person, personDao.findById(id));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 		groupDao.save(group);
 		Assert.assertEquals(GROUPS.length + 1, groupDao.find().size());
 		long id = group.getId();
-		Assert.assertEquals(group, groupDao.find(id));
+		Assert.assertEquals(group, groupDao.findById(id));
 	}
 
 	/**

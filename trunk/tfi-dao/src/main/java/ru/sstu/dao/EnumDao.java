@@ -25,7 +25,7 @@ public abstract class EnumDao<T extends Serializable>
 	/**
 	 * {@inheritDoc}
 	 */
-	public T find(Serializable id) {
+	public T findById(Serializable id) {
 		return getAll()[((Number) id).intValue()];
 	}
 

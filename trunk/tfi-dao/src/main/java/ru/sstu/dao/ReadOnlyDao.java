@@ -25,5 +25,5 @@ public interface ReadOnlyDao<T extends Serializable> {
 	 * @param id entity id
 	 * @return entity
 	 */
-	T find(Serializable id);
+	T findById(Serializable id);
 }
