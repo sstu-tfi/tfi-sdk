@@ -1,5 +1,6 @@
 package ru.sstu.dao;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @param <T> concrete entity class
  * @since DAO 1.0
  */
-public abstract class EnumDao<T extends Identifiable>
+public abstract class EnumDao<T extends Serializable>
 		implements ReadOnlyDao<T> {
 
 	/**
@@ -24,8 +25,8 @@ public abstract class EnumDao<T extends Identifiable>
 	/**
 	 * {@inheritDoc}
 	 */
-	public T find(long id) {
-		return getAll()[(int) id];
+	public T find(Serializable id) {
+		return getAll()[((Number) id).intValue()];
 	}
 
 	/**

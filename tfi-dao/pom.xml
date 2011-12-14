@@ -85,7 +85,7 @@
 		</dependency>
 	</dependencies>
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.1.0.RELEASE</spring.version>
 		<hibernate.version>3.3.1.GA</hibernate.version>
 		<unitils.version>3.1</unitils.version>
 	</properties>

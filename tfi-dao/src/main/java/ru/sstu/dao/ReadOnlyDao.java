@@ -1,5 +1,6 @@
 package ru.sstu.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * @param <T> concrete entity class
  * @since DAO 1.0
  */
-public interface ReadOnlyDao<T extends Identifiable> {
+public interface ReadOnlyDao<T extends Serializable> {
 
 	/**
 	 * Provides all entities in the system.
@@ -24,5 +25,5 @@ public interface ReadOnlyDao<T extends Identifiable> {
 	 * @param id entity id
 	 * @return entity
 	 */
-	T find(long id);
+	T find(Serializable id);
 }

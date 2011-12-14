@@ -1,5 +1,6 @@
 package ru.sstu.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * @param <T> concrete entity class
  * @since DAO 1.0
  */
-public interface Dao<T extends Identifiable> extends ReadOnlyDao<T> {
+public interface Dao<T extends Serializable> extends ReadOnlyDao<T> {
 
 	/**
 	 * <code>save</code> method saves entity.
@@ -31,13 +32,6 @@ public interface Dao<T extends Identifiable> extends ReadOnlyDao<T> {
 	 * @param entity entity to be deleted
 	 */
 	void delete(T entity);
-
-	/**
-	 * Deletes group with given id.
-	 *
-	 * @param id group id
-	 */
-	void delete(long id);
 
 	/**
 	 * <code>delete</code> method removes existing entities.

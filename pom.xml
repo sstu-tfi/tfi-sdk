@@ -46,12 +46,14 @@
 	<repositories>
 		<repository>
 			<id>download.java.net</id>
-			<name>download.java.net</name>
 			<url>http://download.java.net/maven/2</url>
 		</repository>
 		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+		<repository>
 			<id>servertfi</id>
-			<name>servertfi</name>
 			<url>http://tfi.sstu.ru/maven2</url>
 		</repository>
 	</repositories>

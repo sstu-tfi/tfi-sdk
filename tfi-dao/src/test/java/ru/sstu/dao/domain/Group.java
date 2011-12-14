@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import ru.sstu.dao.Identifiable;
-
 /**
  * <code>Group</code> class.
  *
@@ -19,24 +17,15 @@ import ru.sstu.dao.Identifiable;
  */
 @Entity
 @Table(name = "GROUPS")
-public class Group implements Identifiable, Serializable {
+public class Group implements Serializable {
 
-	/**
-	 * Serial version UID.
-	 */
-	private static final long serialVersionUID = 7879814596173794931L;
+	private static final long serialVersionUID = -4136513280308504126L;
 
-	/**
-	 * Id.
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "GROUP_ID_PK", nullable = false)
 	private long id = -1L;
 
-	/**
-	 * Name.
-	 */
 	@Column(name = "GROUP_NAME", nullable = false)
 	private String name;
 
