@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
@@ -48,7 +46,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 * @param id entity's id
 	 * @return entity
 	 */
-	public T find(Serializable id) {
+	public T findById(Serializable id) {
 		return (T) getTemplate().get(type, id);
 	}
 
@@ -75,22 +73,6 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 */
 	public void delete(T entity) {
 		getTemplate().delete(entity);
-	}
-
-	/**
-	 * Removes entity with given id.
-	 *
-	 * @param id id
-	 */
-	public void delete(final long id) {
-		getTemplate().execute(new HibernateCallback<Object>() {
-
-			public Object doInHibernate(Session session) {
-				session.createQuery(getDeleteQuery())
-						.setLong(0, id).executeUpdate();
-				return null;
-			}
-		});
 	}
 
 	/**
@@ -179,15 +161,4 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 * @return HibernateTemplate object
 	 */
 	protected abstract HibernateTemplate getTemplate();
-
-	/**
-	 * @return SQL query for DELETE
-	 */
-	private String getDeleteQuery() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("DELETE FROM ");
-		buffer.append(type.getName());
-		buffer.append(" WHERE id = ?");
-		return buffer.toString();
-	}
 }
