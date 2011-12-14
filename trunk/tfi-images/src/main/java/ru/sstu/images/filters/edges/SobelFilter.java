@@ -8,13 +8,15 @@ package ru.sstu.images.filters.edges;
  */
 public class SobelFilter extends ConvolveEdgeDetector {
 
+	private static final float[] MATRIX = new float[] {
+			-1, 0, 1,
+			-2, 0, 2,
+			-1, 0, 1,
+	};
+
 	@Override
 	protected float[] getVerticalMatrix() {
-		return new float[] {
-				-1, 0, 1,
-				-2, 0, 2,
-				-1, 0, 1,
-		};
+		return MATRIX;
 	}
 
 	@Override
