@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import ru.sstu.dao.Identifiable;
-
 /**
  * <code>Person</code> class.
  *
@@ -22,30 +20,18 @@ import ru.sstu.dao.Identifiable;
  */
 @Entity
 @Table(name = "PERSONS")
-public class Person implements Identifiable, Serializable {
+public class Person implements Serializable {
 
-	/**
-	 * Serial version UID.
-	 */
-	private static final long serialVersionUID = -849603578092478266L;
+	private static final long serialVersionUID = 6206126440370997176L;
 
-	/**
-	 * Id.
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PERSON_ID_PK", nullable = false)
 	private long id;
 
-	/**
-	 * Name.
-	 */
 	@Column(name = "PERSON_NAME", nullable = false)
 	private String name;
 
-	/**
-	 * Group.
-	 */
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Group.class)
 	@JoinColumn(name = "GROUP_ID_FK")
 	private Group group;

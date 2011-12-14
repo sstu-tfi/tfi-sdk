@@ -1,5 +1,6 @@
 package ru.sstu.dao;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -16,18 +17,19 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
  * @param <T> concrete entity class
  * @since DAO 1.0
  */
-public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
+public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 
 	/**
 	 * Concrete entity class.
 	 */
-	private final Class<?> type;
+	private final Class<T> type;
 
 	/**
 	 * Initializes DAO properties.
 	 */
+	@SuppressWarnings("unchecked")
 	protected AbstractDao() {
-		this.type = (Class<?>) ((ParameterizedType) getClass()
+		this.type = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
@@ -36,9 +38,8 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	 *
 	 * @return all entities from data source.
 	 */
-	@SuppressWarnings("unchecked")
 	public List<T> find() {
-		return (List<T>) getTemplate().loadAll(getType());
+		return (List<T>) getTemplate().loadAll(type);
 	}
 
 	/**
@@ -47,9 +48,8 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	 * @param id entity's id
 	 * @return entity
 	 */
-	@SuppressWarnings("unchecked")
-	public T find(long id) {
-		return (T) getTemplate().get(getType(), id);
+	public T find(Serializable id) {
+		return (T) getTemplate().get(type, id);
 	}
 
 	/**
@@ -74,13 +74,7 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	 * @param entity entity
 	 */
 	public void delete(T entity) {
-		Object object = entity.getId();
-		if (object instanceof Number) {
-			long id = ((Number) object).longValue();
-			delete(id);
-		} else {
-			getTemplate().delete(entity);
-		}
+		getTemplate().delete(entity);
 	}
 
 	/**
@@ -112,7 +106,7 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	 * @return detached criteria
 	 */
 	protected DetachedCriteria getCriteria() {
-		return DetachedCriteria.forClass(getType());
+		return DetachedCriteria.forClass(type);
 	}
 
 	/**
@@ -187,21 +181,12 @@ public abstract class AbstractDao<T extends Identifiable> implements Dao<T> {
 	protected abstract HibernateTemplate getTemplate();
 
 	/**
-	 * Provides entity's class.
-	 *
-	 * @return class
-	 */
-	protected Class<?> getType() {
-		return type;
-	}
-
-	/**
 	 * @return SQL query for DELETE
 	 */
 	private String getDeleteQuery() {
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("DELETE FROM ");
-		buffer.append(getType().getName());
+		buffer.append(type.getName());
 		buffer.append(" WHERE id = ?");
 		return buffer.toString();
 	}
