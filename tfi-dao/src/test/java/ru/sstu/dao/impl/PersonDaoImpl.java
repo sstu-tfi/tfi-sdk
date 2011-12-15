@@ -17,15 +17,9 @@ import ru.sstu.dao.domain.Person;
 @Repository("personDao")
 class PersonDaoImpl extends AbstractDao<Person> {
 
-	/**
-	 * Hibernate template resource.
-	 */
 	@Resource
 	private HibernateTemplate testTemplate;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected HibernateTemplate getTemplate() {
 		return testTemplate;
