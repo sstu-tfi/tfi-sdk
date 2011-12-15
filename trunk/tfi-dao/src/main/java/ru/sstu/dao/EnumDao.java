@@ -19,14 +19,14 @@ public abstract class EnumDao<T extends Serializable>
 	 * {@inheritDoc}
 	 */
 	public List<T> find() {
-		return Arrays.asList(getAll());
+		return Arrays.asList(findAll());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public T findById(Serializable id) {
-		return getAll()[((Number) id).intValue()];
+		return findAll()[((Number) id).intValue()];
 	}
 
 	/**
@@ -34,5 +34,5 @@ public abstract class EnumDao<T extends Serializable>
 	 *
 	 * @return array of all objects
 	 */
-	public abstract T[] getAll();
+	public abstract T[] findAll();
 }

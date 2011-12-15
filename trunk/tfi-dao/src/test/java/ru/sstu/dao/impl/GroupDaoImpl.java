@@ -17,15 +17,9 @@ import ru.sstu.dao.domain.Group;
 @Repository("groupDao")
 class GroupDaoImpl extends AbstractDao<Group> {
 
-	/**
-	 * Hibernate template resource.
-	 */
 	@Resource
 	private HibernateTemplate testTemplate;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected HibernateTemplate getTemplate() {
 		return testTemplate;

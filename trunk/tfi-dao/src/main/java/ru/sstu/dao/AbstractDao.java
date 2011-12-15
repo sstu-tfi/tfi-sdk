@@ -129,7 +129,42 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	}
 
 	/**
-	 * Saves entity which is not <code>Identifiable</code>.
+	 * Executes HQL query.
+	 *
+	 * @param query query
+	 * @return list of found entities
+	 */
+	@SuppressWarnings("unchecked")
+	protected List<T> hql(String query) {
+		return getTemplate().find(query);
+	}
+
+	/**
+	 * Executes HQL query.
+	 *
+	 * @param query query
+	 * @param value value
+	 * @return list of found entities
+	 */
+	@SuppressWarnings("unchecked")
+	protected List<T> hql(String query, Object value) {
+		return getTemplate().find(query, value);
+	}
+
+	/**
+	 * Executes HQL query.
+	 *
+	 * @param query  query
+	 * @param values values
+	 * @return list of found entities
+	 */
+	@SuppressWarnings("unchecked")
+	protected List<T> hql(String query, Object... values) {
+		return getTemplate().find(query, values);
+	}
+
+	/**
+	 * Saves entity which is not of type <code>T</code>.
 	 *
 	 * @param entity entity to be saved
 	 */
@@ -138,7 +173,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	}
 
 	/**
-	 * Deletes entity which is not <code>Identifiable</code>.
+	 * Deletes entity which is not of type <code>T</code>.
 	 *
 	 * @param entity entity to be deleted
 	 */

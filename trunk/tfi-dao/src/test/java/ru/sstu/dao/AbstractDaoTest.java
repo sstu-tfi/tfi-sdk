@@ -6,6 +6,7 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.unitils.UnitilsJUnit4;
@@ -67,6 +68,7 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	@Test
 	public void testIoC() throws Exception {
 		Assert.assertNotNull(personDao);
+		Assert.assertNotNull(groupDao);
 	}
 
 	/**
@@ -154,6 +156,18 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	}
 
 	/**
+	 * Tests object deleting.
+	 *
+	 * @throws Exception if some error occurs
+	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testDelete() throws Exception {
+		groupDao.delete(GROUPS[1].group);
+		Assert.assertEquals(GROUPS.length - 1, groupDao.find().size());
+	}
+
+	/**
 	 * Tests {@link AbstractDao#delete(List)} method.
 	 *
 	 * @throws Exception if some error occurs
@@ -170,23 +184,12 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	}
 
 	/**
-	 * Tests object deleting.
-	 *
-	 * @throws Exception if some error occurs
-	 */
-	@Test
-	@DataSet("/dataset.xml")
-	public void testDelete() throws Exception {
-		groupDao.delete(GROUPS[1].group);
-		Assert.assertEquals(GROUPS.length - 1, groupDao.find().size());
-	}
-
-	/**
 	 * Tests search and delete by criteria.
 	 *
 	 * @throws Exception if some error occurs
 	 */
 	@Test
+	@DataSet("/dataset.xml")
 	public void testCriteria() throws Exception {
 		DetachedCriteria criteria = personDao.getCriteria()
 				.add(Restrictions.eq(GROUP, GROUPS[0].group));
@@ -195,44 +198,47 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	}
 
 	/**
-	 * Just for unit test code simplification.
+	 * Tests aggregate functions.
 	 *
-	 * @author Denis_Murashev
+	 * @throws Exception if some error occurs
 	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testAggregate() throws Exception {
+		DetachedCriteria criteria = personDao.getCriteria();
+		criteria.setProjection(Projections.rowCount());
+		Number actual = personDao.aggregate(criteria);
+		Assert.assertEquals(PERSONS.length, actual.intValue());
+	}
+
+	/**
+	 * Tests aggregate functions.
+	 *
+	 * @throws Exception if some error occurs
+	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testHQL() throws Exception {
+		List<Person> persons = personDao.hql("from Person person");
+		Assert.assertEquals(PERSONS.length, persons.size());
+		persons = personDao.hql("from Person person where person.id = 1");
+		Assert.assertEquals(1, persons.size());
+	}
+
 	private static final class GroupHolder {
 
-		/**
-		 * Holds group.
-		 */
 		private Group group = new Group();
 
-		/**
-		 * @param id   id
-		 * @param name name
-		 */
 		private GroupHolder(long id, String name) {
 			group.setId(id);
 			group.setName(name);
 		}
 	}
 
-	/**
-	 * Just for unit test code simplification.
-	 *
-	 * @author Denis_Murashev
-	 */
 	private static final class PersonHolder {
 
-		/**
-		 * Holds person.
-		 */
 		private Person person = new Person();
 	
-		/**
-		 * @param id    id
-		 * @param name  name
-		 * @param group group
-		 */
 		private PersonHolder(long id, String name, Group group) {
 			person.setId(id);
 			person.setName(name);
