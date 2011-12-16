@@ -25,8 +25,10 @@ public class AnnotationMapping<T> extends Mapping<T> {
 		setClass(type);
 		for (Field field : type.getDeclaredFields()) {
 			if (field.isAnnotationPresent(ColumnIndex.class)) {
-				int index = field.getAnnotation(ColumnIndex.class).value();
-				addField(index, field);
+				ColumnIndex annotation = field.getAnnotation(ColumnIndex.class);
+				int index = annotation.value();
+				String value = annotation.defaultValue();
+				addField(index, field, value);
 				checkIndex(index);
 			}
 		}

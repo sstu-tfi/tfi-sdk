@@ -58,8 +58,8 @@ abstract class ExcelTableReader extends FileTableReader {
 		this.rows = rows;
 	}
 
-	static {
-		Mapping.addConverter(Cell.class, String.class, new Converter() {
+	{
+		addConverter(Cell.class, String.class, new Converter() {
 			public String convert(Object value) {
 				Cell cell = (Cell) value;
 				if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
@@ -68,48 +68,48 @@ abstract class ExcelTableReader extends FileTableReader {
 				return cell.getStringCellValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, short.class, new Converter() {
+		addConverter(Cell.class, short.class, new Converter() {
 			public Short convert(Object value) {
 				return ((Number) ((Cell) value).getNumericCellValue())
 						.shortValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, int.class, new Converter() {
+		addConverter(Cell.class, int.class, new Converter() {
 			public Integer convert(Object value) {
 				return ((Number) ((Cell) value).getNumericCellValue())
 						.intValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, long.class, new Converter() {
+		addConverter(Cell.class, long.class, new Converter() {
 			public Long convert(Object value) {
 				return ((Number) ((Cell) value).getNumericCellValue())
 						.longValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, float.class, new Converter() {
+		addConverter(Cell.class, float.class, new Converter() {
 			public Float convert(Object value) {
 				return ((Number) ((Cell) value).getNumericCellValue())
 						.floatValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, double.class, new Converter() {
+		addConverter(Cell.class, double.class, new Converter() {
 			public Double convert(Object value) {
 				return ((Number) ((Cell) value).getNumericCellValue())
 						.doubleValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, boolean.class, new Converter() {
+		addConverter(Cell.class, boolean.class, new Converter() {
 			public Boolean convert(Object value) {
 				return ((Cell) value).getBooleanCellValue();
 			}
 		});
-		Mapping.addConverter(Cell.class, Date.class, new Converter() {
+		addConverter(Cell.class, Date.class, new Converter() {
 			public Date convert(Object value) {
 				Cell cell = (Cell) value;
 				if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
 					try {
-						return (Date) Mapping.getConverter(String.class,
-								Date.class).convert(cell.getStringCellValue());
+						return (Date) getConverter(String.class, Date.class)
+								.convert(cell.getStringCellValue());
 					} catch (TableException e) {
 						throw new RuntimeException(e);
 					}

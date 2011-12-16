@@ -50,7 +50,12 @@ public class XmlMapping<T> extends Mapping<T> {
 				int index = XPathUtil.getNumber(c, "@index").intValue();
 				String fieldName = XPathUtil.getText(c, "@field");
 				Field field = type.getDeclaredField(fieldName);
-				addField(index, field);
+				String value = XPathUtil.getText(c, "@default");
+				if (value != null) {
+					addField(index, field, value);
+				} else {
+					addField(index, field);
+				}
 				checkIndex(index);
 			}
 		} catch (XmlException e) {

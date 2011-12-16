@@ -21,6 +21,11 @@ abstract class FileTableReader implements TableReader {
 	private int skipRows;
 
 	/**
+	 * General settings.
+	 */
+	private Settings settings = new Settings();
+
+	/**
 	 * {@inheritDoc}
 	 */
 	public <T> List<T> read(Mapping<T> mapping, InputStream input)
@@ -33,6 +38,7 @@ abstract class FileTableReader implements TableReader {
 	 */
 	public <T> List<T> read(Mapping<T> mapping, InputStream input,
 			int tableIndex) throws TableException {
+		mapping.setTableReader(this);
 		List<T> table = new ArrayList<T>();
 		init(input, tableIndex);
 		if (skipRows == 0) {
@@ -64,7 +70,22 @@ abstract class FileTableReader implements TableReader {
 	 */
 	public void addConverter(Class<?> fromClass, Class<?> toClass,
 			Converter converter) {
-		Mapping.addConverter(fromClass, toClass, converter);
+		settings.addConverter(fromClass, toClass, converter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Converter getConverter(Class<?> fromClass, Class<?> toClass)
+			throws TableException {
+		return settings.getConverter(fromClass, toClass);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setDateFormat(String dateFormat) {
+		settings.setDateFormat(dateFormat);
 	}
 
 	/**
