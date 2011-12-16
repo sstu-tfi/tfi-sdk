@@ -17,11 +17,6 @@ import junit.framework.TestCase;
 public abstract class TableReaderTest extends TestCase {
 
 	/**
-	 * Path to mapping.
-	 */
-	private static final String MAPPING_PATH = "/SampleEntity.map.xml";
-
-	/**
 	 * Expected values.
 	 */
 	private static final SampleEntity[] EXPECTED = {
@@ -29,6 +24,11 @@ public abstract class TableReaderTest extends TestCase {
 		new SampleEntity("next text", 2, 2.0, getSampleDate()),
 		new SampleEntity("12.0", 3, 3.0, getSampleDate()),
 	};
+
+	/**
+	 * Path to mapping.
+	 */
+	private static final String MAPPING_PATH = "/SampleEntity.map.xml";
 
 	/**
 	 * Table reader.
@@ -115,6 +115,28 @@ public abstract class TableReaderTest extends TestCase {
 	protected abstract String getPath();
 
 	/**
+	 * @return expected values
+	 */
+	protected SampleEntity[] getExpected() {
+		return EXPECTED;
+	}
+
+	/**
+	 * Provides sample date.
+	 *
+	 * @return sample date
+	 */
+	protected static Date getSampleDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear();
+		final int day = 10;
+		final int month = 10;
+		final int year = 2010;
+		calendar.set(year, month - 1, day);
+		return calendar.getTime();
+	}
+
+	/**
 	 * Checks actual values.
 	 *
 	 * @param table actual table values
@@ -130,9 +152,9 @@ public abstract class TableReaderTest extends TestCase {
 	 * @param skip  rows to be skipped
 	 */
 	private void checkValues(List<SampleEntity> table, int skip) {
-		assertEquals(EXPECTED.length - skip, table.size());
-		for (int i = 0; i < EXPECTED.length - skip; i++) {
-			assertEquals(EXPECTED[i + skip], table.get(i));
+		assertEquals(getExpected().length - skip, table.size());
+		for (int i = 0; i < getExpected().length - skip; i++) {
+			assertEquals(getExpected()[i + skip], table.get(i));
 		}
 	}
 
@@ -147,20 +169,5 @@ public abstract class TableReaderTest extends TestCase {
 		assertEquals(expected.getNumber(), actual.getNumber());
 		assertEquals(expected.getValue(), actual.getValue());
 		assertEquals(expected.getDate(), actual.getDate());
-	}
-
-	/**
-	 * Provides sample date.
-	 *
-	 * @return sample date
-	 */
-	private static Date getSampleDate() {
-		Calendar calendar = Calendar.getInstance();
-		calendar.clear();
-		final int day = 10;
-		final int month = 10;
-		final int year = 2010;
-		calendar.set(year, month - 1, day);
-		return calendar.getTime();
 	}
 }

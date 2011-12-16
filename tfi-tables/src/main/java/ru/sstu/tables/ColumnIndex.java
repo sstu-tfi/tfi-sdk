@@ -17,4 +17,11 @@ public @interface ColumnIndex {
 	 * Index of column.
 	 */
 	int value();
+
+	/**
+	 * Default value of a column.
+	 *
+	 * @since Tables 1.1
+	 */
+	String defaultValue() default "";
 }

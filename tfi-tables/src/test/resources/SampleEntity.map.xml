@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table class="ru.sstu.tables.SampleEntity">
-	<column index="0" field="text"/>
-	<column index="1" field="number"/>
-	<column index="2" field="value"/>
-	<column index="4" field="date"/>
+	<column index="0" field="text" default="unknown"/>
+	<column index="1" field="number" default="1"/>
+	<column index="2" field="value" default="1.0"/>
+	<column index="4" field="date" default="10.10.2010"/>
 </table>

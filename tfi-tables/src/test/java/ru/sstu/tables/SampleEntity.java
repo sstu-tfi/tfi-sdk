@@ -33,25 +33,25 @@ public class SampleEntity {
 	/**
 	 * Text field.
 	 */
-	@ColumnIndex(COLUMN_STRING)
+	@ColumnIndex(value = COLUMN_STRING, defaultValue = "unknown")
 	private String text;
 
 	/**
 	 * Number field.
 	 */
-	@ColumnIndex(COLUMN_INT)
+	@ColumnIndex(value = COLUMN_INT, defaultValue = "1")
 	private int number;
 
 	/**
 	 * Double value field.
 	 */
-	@ColumnIndex(COLUMN_DOUBLE)
+	@ColumnIndex(value = COLUMN_DOUBLE, defaultValue = "1.0")
 	private double value;
 
 	/**
 	 * Date field.
 	 */
-	@ColumnIndex(COLUMN_DATE)
+	@ColumnIndex(value = COLUMN_DATE, defaultValue = "10.10.2010")
 	private Date date;
 
 	/**

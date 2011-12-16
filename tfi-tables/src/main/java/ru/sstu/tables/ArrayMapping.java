@@ -53,7 +53,8 @@ public class ArrayMapping<T> extends Mapping<T> {
 		if (toClass == fromClass) {
 			Array.set(object, index, value);
 		} else {
-			Converter converter = getConverter(fromClass, toClass);
+			Converter converter = getTableReader().getConverter(fromClass,
+					toClass);
 			Array.set(object, index, converter.convert(value));
 		}
 	}

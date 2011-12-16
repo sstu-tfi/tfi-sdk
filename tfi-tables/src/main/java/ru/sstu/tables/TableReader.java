@@ -57,4 +57,26 @@ public interface TableReader {
 	 */
 	void addConverter(Class<?> fromClass, Class<?> toClass,
 			Converter converter);
+
+	/**
+	 * Provides converter for given types.
+	 *
+	 * @param fromClass from class
+	 * @param toClass   to class
+	 * @return converter
+	 * @throws TableException if desired converter does not exist
+	 * @see {@link #addConverter(Class, Class, Converter)}
+	 * @since Tables 1.1
+	 */
+	Converter getConverter(Class<?> fromClass, Class<?> toClass)
+			throws TableException;
+
+	/**
+	 * Sets used date format.
+	 *
+	 * @param dateFormat date format
+	 * @see {@link java.text.SimpleDateFormat}
+	 * @since Tables 1.1
+	 */
+	void setDateFormat(String dateFormat);
 }
