@@ -1,8 +1,0 @@
-<root>
-	<node id="1">
-		<subnode>Some text</subnode>
-	</node>
-	<node id="2">
-		<subnode>Some text</subnode>
-	</node>
-</root>
