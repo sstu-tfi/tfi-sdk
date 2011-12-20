@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-math</artifactId>
-		<version>1.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-math-optim</artifactId>
 	<name>Optimization package</name>
-	<version>1.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>ru.sstu.tfi.sdk</groupId>
