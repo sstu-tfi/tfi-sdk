@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ru.sstu.properties.core.AbstractSettings;
 import ru.sstu.properties.core.PropertyException;
+import ru.sstu.properties.core.PropertyHelper;
 
 /**
  * <code>SettingsPanel</code> class represents panel for editing of properties.
@@ -24,9 +24,9 @@ import ru.sstu.properties.core.PropertyException;
  * @param <T> class that stores properties
  * @since Properties 1.0
  */
-public class SettingsPanel<T extends AbstractSettings> extends JPanel {
+public class SettingsPanel<T> extends JPanel {
 
-	private static final long serialVersionUID = -867298649994667419L;
+	private static final long serialVersionUID = 8179383598369273055L;
 
 	private final T settings;
 	private List<JTextField> textFields = new ArrayList<JTextField>();
@@ -62,7 +62,7 @@ public class SettingsPanel<T extends AbstractSettings> extends JPanel {
 			Object value = f.getText();
 			properties.put(key, value);
 		}
-		settings.load(properties);
+		PropertyHelper.load(settings, properties);
 	}
 
 	private void init(String resource) throws PropertyException {
@@ -75,7 +75,7 @@ public class SettingsPanel<T extends AbstractSettings> extends JPanel {
 		c.gridx = 0;
 		c.gridy = 0;
 		ResourceBundle bundle = ResourceBundle.getBundle(resource);
-		Map<Object, Object> properties = settings.toProperties();
+		Map<Object, Object> properties = PropertyHelper.toProperties(settings);
 		final int count = 15;
 		for (Object key : properties.keySet()) {
 			add(new JLabel(bundle.getString(key.toString())), c);

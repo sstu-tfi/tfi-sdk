@@ -1,12 +1,15 @@
 package ru.sstu.properties.core;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
- * <code>AbstractSettings</code> class contains mechanisms for properties
+ * <code>PropertyManager</code> class provides mechanisms for properties
  * loading into settings objects and vice versa.
  *
  * The subclass of <code>AbstractSettings</code> should contain fields
@@ -15,10 +18,10 @@ import java.util.Map;
  * @author Denis_Murashev
  * @since Properties 1.0
  */
-public abstract class AbstractSettings {
+public class PropertyHelper {
 
 	private static final Map<Class<?>, Converter<?>> CONVERTERS
-			= new HashMap<Class<?>, AbstractSettings.Converter<?>>();
+			= new HashMap<Class<?>, Converter<?>>();
 	static {
 		CONVERTERS.put(int.class, new IntegerConverter());
 		CONVERTERS.put(long.class, new LongConverter());
@@ -30,13 +33,36 @@ public abstract class AbstractSettings {
 	/**
 	 * Loads given properties into settings object.
 	 *
-	 * @param properties properties
+	 * @param object settings holder
+	 * @param input  input stream
+	 * @param <T>    type of settings holder
+	 * @return settings holder with updated values
 	 * @throws PropertyException if properties cannot be loaded
 	 */
-	public final void load(Map<Object, Object> properties)
+	public static <T> T load(T object, InputStream input)
 			throws PropertyException {
 		try {
-			Field[] fields = this.getClass().getDeclaredFields();
+			Properties properties = new Properties();
+			properties.load(input);
+			return load(object, properties);
+		} catch (IOException e) {
+			throw new PropertyException(e);
+		}
+	}
+
+	/**
+	 * Loads given properties into settings object.
+	 *
+	 * @param object     settings holder
+	 * @param properties properties
+	 * @param <T>        type of settings holder
+	 * @return settings holder with updated values
+	 * @throws PropertyException if properties cannot be loaded
+	 */
+	public static <T> T load(T object, Map<Object, Object> properties)
+			throws PropertyException {
+		try {
+			Field[] fields = object.getClass().getDeclaredFields();
 			for (Field f : fields) {
 				Property annotation = f.getAnnotation(Property.class);
 				if (annotation != null) {
@@ -45,10 +71,11 @@ public abstract class AbstractSettings {
 					if (converter != null) {
 						Object value = converter.convert(text);
 						f.setAccessible(true);
-						f.set(this, value);
+						f.set(object, value);
 					}
 				}
 			}
+			return object;
 		} catch (IllegalArgumentException e) {
 			throw new PropertyException(e);
 		} catch (IllegalAccessException e) {
@@ -59,20 +86,22 @@ public abstract class AbstractSettings {
 	/**
 	 * Provides properties as {@link Map} object for given settings object.
 	 *
+	 * @param object settings holder
 	 * @return properties
 	 * @throws PropertyException if properties cannot be generated
 	 */
-	public final Map<Object, Object> toProperties() throws PropertyException {
+	public static Map<Object, Object> toProperties(Object object)
+			throws PropertyException {
 		try {
 			Map<Object, Object> properties
 					= new LinkedHashMap<Object, Object>();
-			Field[] fields = this.getClass().getDeclaredFields();
+			Field[] fields = object.getClass().getDeclaredFields();
 			for (Field f : fields) {
 				Property annotation = f.getAnnotation(Property.class);
 				if (annotation != null) {
 					String name = annotation.value();
 					f.setAccessible(true);
-					String value = f.get(this).toString();
+					String value = f.get(object).toString();
 					properties.put(name, value);
 				}
 			}
@@ -102,7 +131,7 @@ public abstract class AbstractSettings {
 	 *
 	 * @param <T> type of converter
 	 */
-	protected interface Converter<T> {
+	public interface Converter<T> {
 
 		/**
 		 * Converts given String value to specified type.
