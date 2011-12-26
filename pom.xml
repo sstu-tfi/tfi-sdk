@@ -5,21 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-parent</artifactId>
-	<version>3</version>
+	<version>4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>TFI Software Development Kit Library</name>
-	<modules>
-		<module>build-tools</module>
-		<module>tfi-dao</module>
-		<module>tfi-docs</module>
-		<module>tfi-math</module>
-		<module>tfi-tables</module>
-		<module>tfi-web</module>
-		<module>tfi-xml</module>
-		<module>tfi-properties</module>
-		<module>tfi-images</module>
-		<module>tfi-ocr</module>
-	</modules>
 	<licenses>
 		<license>
 			<name>LGPL</name>
