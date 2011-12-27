@@ -128,11 +128,13 @@ public final class DomUtil {
 			throws XmlException {
 		File file = new File(fileName);
 		File dir = file.getParentFile();
-		if (dir != null && !dir.exists()) {
-			dir.mkdirs();
+		if (dir == null) {
+			throw new XmlException("Cannot create file: " + fileName);
 		}
 		try {
-			save(document, new FileOutputStream(file));
+			if (dir.exists() || dir.mkdirs()) {
+				save(document, new FileOutputStream(file));
+			}
 		} catch (FileNotFoundException e) {
 			throw new XmlException(e);
 		}
