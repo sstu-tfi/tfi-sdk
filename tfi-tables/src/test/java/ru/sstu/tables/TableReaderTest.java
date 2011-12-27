@@ -35,25 +35,19 @@ public abstract class TableReaderTest extends TestCase {
 	 */
 	private TableReader reader;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		reader = getReader();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 
 	/**
-	 * Tests {@link TableReader#read(Class, InputStream)} method.
+	 * Tests {@link TableReader} with {@link AnnotationMapping}.
 	 *
 	 * @throws Exception if some error occurs
 	 */
@@ -65,7 +59,7 @@ public abstract class TableReaderTest extends TestCase {
 	}
 
 	/**
-	 * Tests {@link TableReader#read(InputStream, InputStream)} method.
+	 * Tests {@link TableReader} with {@link XmlMapping}.
 	 *
 	 * @throws Exception if some error occurs
 	 */
@@ -77,7 +71,7 @@ public abstract class TableReaderTest extends TestCase {
 	}
 
 	/**
-	 * Tests {@link TableReader#read(Class, InputStream)} method.
+	 * Tests {@link SkipRows} annotation.
 	 *
 	 * @throws Exception if some error occurs
 	 */
@@ -91,7 +85,7 @@ public abstract class TableReaderTest extends TestCase {
 	}
 
 	/**
-	 * Tests {@link TableReader#read(InputStream, InputStream)} method.
+	 * Tests skipping rows set by XML.
 	 *
 	 * @throws Exception if some error occurs
 	 */

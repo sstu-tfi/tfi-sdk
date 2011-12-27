@@ -27,8 +27,24 @@ public class XmlMapping<T> extends Mapping<T> {
 	 * @param mapping XML mapping
 	 * @throws TableException if cannot create mapping
 	 */
-	@SuppressWarnings("unchecked")
 	public XmlMapping(InputStream mapping) throws TableException {
+		init(mapping);
+	}
+
+	/**
+	 * @param file configuration file
+	 * @throws TableException if wrong configuration file or file not found
+	 */
+	public XmlMapping(File file) throws TableException {
+		try {
+			init(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			throw new TableException(e);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void init(InputStream mapping) throws TableException {
 		try {
 			Document document = DomUtil.open(mapping);
 			String className = XPathUtil.getText(document, "/table/@class");
@@ -67,14 +83,5 @@ public class XmlMapping<T> extends Mapping<T> {
 		} catch (NoSuchFieldException e) {
 			throw new TableException(e);
 		}
-	}
-
-	/**
-	 * @param file configuration file
-	 * @throws TableException        if wrong configuration file
-	 * @throws FileNotFoundException if configuration file not found
-	 */
-	public XmlMapping(File file) throws TableException, FileNotFoundException {
-		this(new FileInputStream(file));
 	}
 }
