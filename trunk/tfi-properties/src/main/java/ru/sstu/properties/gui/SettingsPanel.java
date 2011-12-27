@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import javax.swing.JLabel;
@@ -77,12 +78,12 @@ public class SettingsPanel<T> extends JPanel {
 		ResourceBundle bundle = ResourceBundle.getBundle(resource);
 		Map<Object, Object> properties = PropertyHelper.toProperties(settings);
 		final int count = 15;
-		for (Object key : properties.keySet()) {
-			add(new JLabel(bundle.getString(key.toString())), c);
+		for (Entry<Object, Object> entry : properties.entrySet()) {
+			add(new JLabel(bundle.getString(entry.getKey().toString())), c);
 			c.gridx = 1;
-			JTextField field = new JTextField(properties.get(key).toString(),
+			JTextField field = new JTextField(entry.getValue().toString(),
 					count);
-			field.setName(key.toString());
+			field.setName(entry.getKey().toString());
 			textFields.add(field);
 			add(field, c);
 			c.gridy++;
