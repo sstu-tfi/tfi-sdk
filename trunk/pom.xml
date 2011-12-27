@@ -21,6 +21,14 @@
 			<email>denismurashev@gmail.com</email>
 		</developer>
 	</developers>
+	<issueManagement>
+		<system>Google</system>
+		<url>http://code.google.com/p/tfi-sdk/issues/list</url>
+	</issueManagement>
+	<ciManagement>
+		<system>hudson</system>
+		<url>http://tfi.sstu.ru:7070/hudson</url>
+	</ciManagement>
 	<scm>
 		<connection>scm:svn:https://tfi-sdk.googlecode.com/svn/trunk</connection>
 		<url>https://tfi-sdk.googlecode.com/svn/trunk</url>
@@ -32,6 +40,19 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId> 
+			<artifactId>log4j</artifactId> 
+			<version>1.2.16</version> 
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId> 
+			<artifactId>junit</artifactId> 
+			<version>3.8.2</version> 
+			<scope>test</scope> 
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
