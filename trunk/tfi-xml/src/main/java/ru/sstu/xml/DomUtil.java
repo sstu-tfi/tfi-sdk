@@ -20,6 +20,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -34,6 +35,8 @@ import org.xml.sax.SAXException;
  * @since XML 1.0
  */
 public final class DomUtil {
+
+	private static Logger log = Logger.getLogger(DomUtil.class);
 
 	/**
 	 * No need to instantiate.
@@ -89,10 +92,20 @@ public final class DomUtil {
 	 * @throws XmlException if cannot open document
 	 */
 	public static Document open(String fileName) throws XmlException {
+		InputStream input = null;
 		try {
-			return open(new FileInputStream(fileName));
+			input = new FileInputStream(fileName);
+			return open(input);
 		} catch (FileNotFoundException e) {
 			throw new XmlException(e);
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					log.error("Cannot close input stream", e);
+				}
+			}
 		}
 	}
 
@@ -131,12 +144,22 @@ public final class DomUtil {
 		if (dir == null) {
 			throw new XmlException("Cannot create file: " + fileName);
 		}
+		OutputStream output = null;
 		try {
 			if (dir.exists() || dir.mkdirs()) {
-				save(document, new FileOutputStream(file));
+				output = new FileOutputStream(file);
+				save(document, output);
 			}
 		} catch (FileNotFoundException e) {
 			throw new XmlException(e);
+		} finally {
+			if (output != null) {
+				try {
+					output.close();
+				} catch (IOException e) {
+					log.error("Cannot close output stream", e);
+				}
+			}
 		}
 	}
 }
