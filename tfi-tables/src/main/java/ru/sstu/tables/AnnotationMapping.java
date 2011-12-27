@@ -17,7 +17,7 @@ public class AnnotationMapping<T> extends Mapping<T> {
 	 */
 	public AnnotationMapping(Class<T> type) {
 		if (type.isAnnotationPresent(TableIndex.class)) {
-			setSkipRows(type.getAnnotation(TableIndex.class).value());
+			setTableIndex(type.getAnnotation(TableIndex.class).value());
 		}
 		if (type.isAnnotationPresent(SkipRows.class)) {
 			setSkipRows(type.getAnnotation(SkipRows.class).value());

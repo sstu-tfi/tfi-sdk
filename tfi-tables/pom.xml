@@ -12,8 +12,8 @@
 	<artifactId>tfi-tables</artifactId>
 	<version>1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Electronic tables support</name>
-	<description>Electronic tables support</description>
+	<name>Electronic Tables Support</name>
+	<description>Electronic Tables Support</description>
 	<developers>
 		<developer>
 			<name>Denis Murashev</name>
@@ -44,12 +44,6 @@
 			<groupId>ru.sstu.tfi.sdk</groupId>
 			<artifactId>tfi-xml</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

@@ -3,9 +3,11 @@ package ru.sstu.tables;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -23,6 +25,8 @@ import ru.sstu.xml.XmlException;
  */
 public class XmlMapping<T> extends Mapping<T> {
 
+	private static Logger log = Logger.getLogger(XmlMapping.class);
+
 	/**
 	 * @param mapping XML mapping
 	 * @throws TableException if cannot create mapping
@@ -36,10 +40,20 @@ public class XmlMapping<T> extends Mapping<T> {
 	 * @throws TableException if wrong configuration file or file not found
 	 */
 	public XmlMapping(File file) throws TableException {
+		InputStream input = null;
 		try {
-			init(new FileInputStream(file));
+			input = new FileInputStream(file);
+			init(input);
 		} catch (FileNotFoundException e) {
 			throw new TableException(e);
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					log.error("Cannot close input stream", e);
+				}
+			}
 		}
 	}
 
