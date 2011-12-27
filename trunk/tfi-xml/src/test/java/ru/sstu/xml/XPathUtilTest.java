@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
  * <code>XPathUtilTest</code> class is unit test for <code>XPathUtil</code>.
  *
  * @author Denis A. Murashev
- * @since 1.0
+ * @since XML 1.0
  */
 public class XPathUtilTest extends TestCase {
 
