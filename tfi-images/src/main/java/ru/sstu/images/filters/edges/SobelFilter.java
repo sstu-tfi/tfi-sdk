@@ -6,7 +6,7 @@ package ru.sstu.images.filters.edges;
  * @author Denis_Murashev
  * @since Images 1.0
  */
-public class SobelFilter extends ConvolveEdgeDetector {
+public class SobelFilter extends EdgeDetector {
 
 	private static final float[] MATRIX = new float[] {
 			-1, 0, 1,
