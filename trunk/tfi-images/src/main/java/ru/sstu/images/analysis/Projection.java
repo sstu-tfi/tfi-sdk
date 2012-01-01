@@ -1,5 +1,6 @@
 package ru.sstu.images.analysis;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,9 @@ import java.util.TreeSet;
  * @author Denis_Murashev
  * @since Images 1.0
  */
-public final class Projection {
+public final class Projection implements Serializable {
+
+	private static final long serialVersionUID = -4789585582420000756L;
 
 	private float[] values;
 
@@ -59,7 +62,7 @@ public final class Projection {
 	 * @return the values
 	 */
 	public float[] getValues() {
-		return values;
+		return values.clone();
 	}
 
 	/**

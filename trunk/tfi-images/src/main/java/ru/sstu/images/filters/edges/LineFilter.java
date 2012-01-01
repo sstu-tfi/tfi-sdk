@@ -6,15 +6,17 @@ package ru.sstu.images.filters.edges;
  * @author Denis_Murashev
  * @since Images 1.0
  */
-public class LineFilter extends ConvolveEdgeDetector {
+public class LineFilter extends EdgeDetector {
+
+	private static final float[] MATRIX = new float[] {
+			-1, 2, -1,
+			-1, 2, -1,
+			-1, 2, -1,
+	};
 
 	@Override
 	protected float[] getVerticalMatrix() {
-		return new float[] {
-				-1, 2, -1,
-				-1, 2, -1,
-				-1, 2, -1,
-		};
+		return MATRIX;
 	}
 
 	@Override
