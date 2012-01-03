@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>4</version>
+		<version>5</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-tables</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 	<name>Electronic Tables Support</name>
 	<description>Electronic Tables Support</description>
