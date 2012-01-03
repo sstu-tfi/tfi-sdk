@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>3</version>
+		<version>5</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>ru.sstu.tfi.sdk</groupId>
 			<artifactId>tfi-properties</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
