@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-parent</artifactId>
-	<version>5</version>
+	<version>6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<url>http://code.google.com/p/tfi-sdk/</url>
 	<name>TFI Software Development Kit Library</name>
@@ -30,8 +30,8 @@
 		<url>http://tfi.sstu.ru:7070/hudson</url>
 	</ciManagement>
 	<scm>
-		<connection>scm:svn:https://tfi-sdk.googlecode.com/svn/trunk/${project.artifactId}</connection>
-		<url>https://tfi-sdk.googlecode.com/svn/trunk/${project.artifactId}</url>
+		<connection>scm:svn:https://tfi-sdk.googlecode.com/svn/trunk</connection>
+		<url>https://tfi-sdk.googlecode.com/svn/trunk</url>
 	</scm>
 	<organization>
 		<name>TFI branch of Engels Instutute of Technology</name>
