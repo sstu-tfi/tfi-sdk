@@ -94,26 +94,25 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	/**
 	 * Provides unique entity with given criteria.
 	 *
+	 * @param <U> concrete entity class
 	 * @param criteria criteria
 	 * @return unique entity
 	 */
 	@SuppressWarnings("unchecked")
-	protected T unique(DetachedCriteria criteria) {
-		List<T> list = getTemplate().findByCriteria(criteria);
-		if (list.size() == 1) {
-			return list.get(0);
-		}
-		return null;
+	protected <U> U unique(DetachedCriteria criteria) {
+		List<U> list = getTemplate().findByCriteria(criteria);
+		return list.size() == 1 ? list.get(0) : null;
 	}
 
 	/**
 	 * Provides list of entities.
 	 *
+	 * @param <U> concrete entity class
 	 * @param criteria search criteria
 	 * @return list of entities
 	 */
 	@SuppressWarnings("unchecked")
-	protected List<T> list(DetachedCriteria criteria) {
+	protected <U> List<U> list(DetachedCriteria criteria) {
 		return getTemplate().findByCriteria(criteria);
 	}
 
