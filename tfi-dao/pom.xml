@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>3</version>
+		<version>7-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
@@ -13,10 +13,9 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<name>TFI Data Access Object for Spring+Hibernate</name>
 	<properties>
-		<spring.version>3.1.0.RELEASE</spring.version>
-		<hibernate.version>3.6.9.Final</hibernate.version>
-		<hibernate.annotations.version>3.5.6-Final</hibernate.annotations.version>
-		<unitils.version>3.2</unitils.version>
+		<spring.version>3.1.2.RELEASE</spring.version>
+		<hibernate.version>3.6.10.Final</hibernate.version>
+		<unitils.version>3.3</unitils.version>
 		<slf4j.version>1.6.1</slf4j.version>
 	</properties>
 	<dependencies>
@@ -38,44 +37,36 @@
 		</dependency>
 		<dependency>
 			<groupId>org.unitils</groupId>
-			<artifactId>unitils-spring</artifactId>
-			<version>${unitils.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.unitils</groupId>
 			<artifactId>unitils-dbunit</artifactId>
 			<version>${unitils.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.unitils</groupId>
-			<artifactId>unitils-database</artifactId>
-			<version>${unitils.version}</version>
-			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.unitils</groupId>
 			<artifactId>unitils-orm</artifactId>
 			<version>${unitils.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernate.annotations.version}</version>
-			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.persistence</groupId>
+					<artifactId>persistence-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.8.0.GA</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
