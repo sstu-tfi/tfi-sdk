@@ -5,17 +5,17 @@
 	<parent>
 		<groupId>ru.sstu.tfi.sdk</groupId>
 		<artifactId>tfi-parent</artifactId>
-		<version>3</version>
+		<version>5</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.sstu.tfi.sdk</groupId>
 	<artifactId>tfi-web</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>TFI Web utilities</name>
 	<description>TFI Web utilities SDK</description>
 	<properties>
-		<jsf.version>2.0.3</jsf.version>
+		<jsf.version>2.1.6</jsf.version>
 	</properties>
 	<dependencies>
 		<dependency>
