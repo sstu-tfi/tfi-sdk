@@ -21,7 +21,7 @@ import com.sun.faces.application.ApplicationAssociate;
 import com.sun.faces.application.ApplicationResourceBundle;
 
 /**
- * <code>Messages</code> class provides access to JSF message resources.
+ * {@code Messages} class provides access to JSF message resources.
  *
  * @author Alexander_Ignatov
  * @author Denis_Murashev
@@ -43,8 +43,9 @@ public final class JsfMessages extends Messages {
 		Map<String, ApplicationResourceBundle> resourceBundles = associate
 				.getResourceBundles();
 		List<String> bundles = new ArrayList<String>();
-		for (String key : resourceBundles.keySet()) {
-			bundles.add(resourceBundles.get(key).getBaseName());
+		for (Map.Entry<String, ApplicationResourceBundle> entry
+				: resourceBundles.entrySet()) {
+			bundles.add(entry.getValue().getBaseName());
 		}
 		setBundles(bundles.toArray(new String[bundles.size()]));
 	}
@@ -72,6 +73,7 @@ public final class JsfMessages extends Messages {
 		FacesMessage message = null;
 		for (String bundle : getBundles()) {
 			message = getMessage(bundle, resourceId, params);
+			// TODO Now it is always not null!
 			if (message != null) {
 				return message;
 			}
@@ -95,6 +97,8 @@ public final class JsfMessages extends Messages {
 		String appBundle = app.getMessageBundle();
 		String summary = getString(appBundle, bundleName, resourceId, params);
 		if (summary == null) {
+			// TODO Questions should be generated
+			// only after checking in all bundles.
 			String questions = "???";
 			StringBuilder buffer = new StringBuilder();
 			buffer.append(questions).append(resourceId).append(questions);

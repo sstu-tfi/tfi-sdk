@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 /**
- * <code>AbstractResourceLoaderServlet</code> class provides base procedure for
+ * {@code AbstractResourceLoaderServlet} class provides base procedure for
  * resource loading.
  *
  * @author Denis_Murashev
@@ -41,10 +41,16 @@ public abstract class AbstractResourceLoaderServlet extends HttpServlet {
 			return;
 		}
 		response.setContentType(getMimeType(object));
-		OutputStream output = response.getOutputStream();
-		write(object, output);
-		output.flush();
-		output.close();
+		OutputStream output = null;
+		try {
+			output = response.getOutputStream();
+			write(object, output);
+			output.flush();
+		} finally {
+			if (output != null) {
+				output.close();
+			}
+		}
 	}
 
 	/**
