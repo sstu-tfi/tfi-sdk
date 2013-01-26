@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * <code>EnumDao</code> class is most common DAO for enumerations.
- * It relies on object id is its number (beginning with 0) in enumeration.
+ * {@code EnumDao} class is most common DAO for enumerations.
+ * It relies on object id is its number (starting with 0) in enumeration.
  *
  * @author Denis_Murashev
  * @param <T> concrete entity class
@@ -15,16 +15,12 @@ import java.util.List;
 public abstract class EnumDao<T extends Serializable>
 		implements ReadOnlyDao<T> {
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public List<T> find() {
 		return Arrays.asList(findAll());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public T findById(Serializable id) {
 		return findAll()[((Number) id).intValue()];
 	}
