@@ -18,12 +18,12 @@ import ru.sstu.dao.domain.Group;
 import ru.sstu.dao.domain.Person;
 
 /**
- * <code>AbstractDaoTest</code> class is unit test for {@link AbstractDao}.
+ * {@code AbstractDaoTest} class is unit test for {@link AbstractDao}.
  *
  * @author Denis_Murashev
  * @since DAO 1.0
  */
-@SpringApplicationContext("test-beans.xml")
+@SpringApplicationContext("applicationContext-test.xml")
 public class AbstractDaoTest extends UnitilsJUnit4 {
 
 	/**
@@ -120,6 +120,22 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	}
 
 	/**
+	 * Tests
+	 * @link AbstractDao#unique(org.hibernate.criterion.DetachedCriteria)}
+	 * method.
+	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testUnique() {
+		DetachedCriteria criteria = personDao.getCriteria()
+				.add(Restrictions.eq("id", 1L));
+		Assert.assertEquals(PERSONS[0].person, personDao.unique(criteria));
+		criteria = personDao.getCriteria()
+				.add(Restrictions.eq("id", 0L));
+		Assert.assertNull(personDao.unique(criteria));
+	}
+
+	/**
 	 * Tests object saving.
 	 *
 	 * @throws Exception if some error occurs
@@ -133,6 +149,11 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 		Assert.assertEquals(GROUPS.length + 1, groupDao.find().size());
 		long id = group.getId();
 		Assert.assertEquals(group, groupDao.findById(id));
+
+		Person person = new Person();
+		person.setName("X");
+		person.setGroup(group);
+		groupDao.save(person);
 	}
 
 	/**
@@ -163,6 +184,16 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	@DataSet("/dataset.xml")
 	public void testDelete() throws Exception {
 		groupDao.delete(GROUPS[1].group);
+		Assert.assertEquals(GROUPS.length - 1, groupDao.find().size());
+	}
+
+	/**
+	 * Tests {@link AbstractDao#delete(Object)} method.
+	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testDeleteObject() {
+		personDao.delete(GROUPS[1].group);
 		Assert.assertEquals(GROUPS.length - 1, groupDao.find().size());
 	}
 
@@ -220,7 +251,10 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	public void testHQL() throws Exception {
 		List<Person> persons = personDao.hql("from Person person");
 		Assert.assertEquals(PERSONS.length, persons.size());
-		persons = personDao.hql("from Person person where person.id = 1");
+		persons = personDao.hql("from Person person where person.id = ?", 1L);
+		Assert.assertEquals(1, persons.size());
+		persons = personDao.hql("from Person person "
+				+ "where person.id = ? and person.name = ?", 1L, "Aa");
 		Assert.assertEquals(1, persons.size());
 	}
 
