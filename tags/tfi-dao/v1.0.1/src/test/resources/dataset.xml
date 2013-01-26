@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<GROUPS GROUP_ID_PK="1" GROUP_NAME="A"/>
+	<GROUPS GROUP_ID_PK="2" GROUP_NAME="B"/>
+	<PERSONS PERSON_ID_PK="1" PERSON_NAME="Aa" GROUP_ID_FK="1"/>
+	<PERSONS PERSON_ID_PK="2" PERSON_NAME="Bb" GROUP_ID_FK="1"/>
+</dataset>
