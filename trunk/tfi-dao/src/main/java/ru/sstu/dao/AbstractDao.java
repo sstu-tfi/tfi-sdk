@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
@@ -22,13 +23,25 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 */
 	private final Class<T> type;
 
+	private Order order;
+
 	/**
 	 * Initializes DAO properties.
 	 */
-	@SuppressWarnings("unchecked")
 	protected AbstractDao() {
+		this(null);
+	}
+
+	/**
+	 * Initializes DAO properties.
+	 *
+	 * @param order sort order
+	 */
+	@SuppressWarnings("unchecked")
+	protected AbstractDao(Order order) {
 		this.type = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
+		this.order = order;
 	}
 
 	/**
@@ -36,8 +49,11 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 *
 	 * @return all entities from data source.
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<T> find() {
-		return (List<T>) getTemplate().loadAll(type);
+		return order == null ? getTemplate().loadAll(type)
+				: getTemplate().findByCriteria(getCriteria().addOrder(order));
 	}
 
 	/**
@@ -46,8 +62,9 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 * @param id entity's id
 	 * @return entity
 	 */
+	@Override
 	public T findById(Serializable id) {
-		return (T) getTemplate().get(type, id);
+		return getTemplate().get(type, id);
 	}
 
 	/**
@@ -55,6 +72,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 *
 	 * @param entity entity
 	 */
+	@Override
 	public void save(T entity) {
 		getTemplate().saveOrUpdate(entity);
 	}
@@ -62,6 +80,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void save(List<T> entities) {
 		getTemplate().saveOrUpdateAll(entities);
 	}
@@ -71,6 +90,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 *
 	 * @param entity entity
 	 */
+	@Override
 	public void delete(T entity) {
 		getTemplate().delete(entity);
 	}
@@ -78,6 +98,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void delete(List<T> entities) {
 		getTemplate().deleteAll(entities);
 	}
@@ -113,6 +134,9 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	protected <U> List<U> list(DetachedCriteria criteria) {
+		if (order != null) {
+			criteria.addOrder(order);
+		}
 		return getTemplate().findByCriteria(criteria);
 	}
 

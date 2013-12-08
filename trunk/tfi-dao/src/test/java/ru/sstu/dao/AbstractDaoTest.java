@@ -60,6 +60,12 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	private AbstractDao<Group> groupDao;
 
 	/**
+	 * DAO for groups.
+	 */
+	@SpringBean("orderedGroupDao")
+	private AbstractDao<Group> orderedGroupDao;
+
+	/**
 	 * Tests Spring IoC working.
 	 *
 	 * @throws Exception if some error occurs
@@ -101,6 +107,22 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 		final long id = 1;
 		Assert.assertEquals(GROUPS[0].group, groupDao.findById(id));
 		Assert.assertEquals(PERSONS[0].person, personDao.findById(id));
+	}
+
+	/**
+	 * Tests common objects search.
+	 *
+	 * @throws Exception if some error occurs
+	 */
+	@Test
+	@DataSet("/dataset.xml")
+	public void testFindOrdered() throws Exception {
+		List<Group> groups = orderedGroupDao.find();
+		Assert.assertEquals(GROUPS.length, groups.size());
+		for (int i = 0; i < GROUPS.length; i++) {
+			int index = GROUPS.length - i - 1;
+			Assert.assertEquals(GROUPS[index].group, groups.get(i));
+		}
 	}
 
 	/**
@@ -271,7 +293,7 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	private static final class PersonHolder {
 
 		private Person person = new Person();
-	
+
 		private PersonHolder(long id, String name, Group group) {
 			person.setId(id);
 			person.setName(name);
