@@ -32,6 +32,11 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 	private static final String GROUP = "group";
 
 	/**
+	 * Name property.
+	 */
+	private static final String NAME = "name";
+
+	/**
 	 * Expected groups.
 	 */
 	private static final GroupHolder[] GROUPS = {
@@ -139,6 +144,10 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 		criteria = personDao.getCriteria()
 				.add(Restrictions.eq(GROUP, GROUPS[1].group));
 		Assert.assertEquals(0, personDao.list(criteria).size());
+		criteria = orderedGroupDao.getCriteria().add(Restrictions
+				.eq(NAME, "A"));
+		Assert.assertEquals(GROUPS[0].group,
+				orderedGroupDao.list(criteria).get(0));
 	}
 
 	/**
@@ -261,6 +270,18 @@ public class AbstractDaoTest extends UnitilsJUnit4 {
 		criteria.setProjection(Projections.rowCount());
 		Number actual = personDao.aggregate(criteria);
 		Assert.assertEquals(PERSONS.length, actual.intValue());
+		criteria = personDao.getCriteria().add(Restrictions.eq(NAME, "0"));
+		criteria.setProjection(Projections.rowCount());
+		actual = personDao.aggregate(criteria);
+		Assert.assertEquals(0, actual.intValue());
+		criteria = personDao.getCriteria();
+		criteria.setProjection(Projections.avg("id"));
+		actual = personDao.aggregate(criteria);
+		Assert.assertEquals(1.5, actual.doubleValue(), 0.0);
+		criteria = personDao.getCriteria().add(Restrictions.eq(NAME, "1"));
+		criteria.setProjection(Projections.avg("id"));
+		actual = personDao.aggregate(criteria);
+		Assert.assertNull(actual);
 	}
 
 	/**
