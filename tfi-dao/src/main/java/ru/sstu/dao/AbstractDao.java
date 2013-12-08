@@ -147,8 +147,7 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 * @return numeric result
 	 */
 	protected Number aggregate(DetachedCriteria criteria) {
-		Number number = (Number) getTemplate().findByCriteria(criteria).get(0);
-		return number != null ? number : 0;
+		return (Number) getTemplate().findByCriteria(criteria).get(0);
 	}
 
 	/**
