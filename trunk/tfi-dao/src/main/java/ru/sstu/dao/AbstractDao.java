@@ -23,25 +23,25 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 */
 	private final Class<T> type;
 
-	private Order order;
+	private Order[] orders;
 
 	/**
 	 * Initializes DAO properties.
 	 */
 	protected AbstractDao() {
-		this(null);
+		this(new Order[0]);
 	}
 
 	/**
 	 * Initializes DAO properties.
 	 *
-	 * @param order sort order
+	 * @param orders sort orders
 	 */
 	@SuppressWarnings("unchecked")
-	protected AbstractDao(Order order) {
+	protected AbstractDao(Order... orders) {
 		this.type = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
-		this.order = order;
+		this.orders = orders;
 	}
 
 	/**
@@ -52,8 +52,14 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> find() {
-		return order == null ? getTemplate().loadAll(type)
-				: getTemplate().findByCriteria(getCriteria().addOrder(order));
+		if (orders.length == 0) {
+			return getTemplate().loadAll(type);
+		}
+		DetachedCriteria criteria = getCriteria();
+		for (Order o : orders) {
+			criteria.addOrder(o);
+		}
+		return getTemplate().findByCriteria(criteria);
 	}
 
 	/**
@@ -134,8 +140,8 @@ public abstract class AbstractDao<T extends Serializable> implements Dao<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	protected <U> List<U> list(DetachedCriteria criteria) {
-		if (order != null) {
-			criteria.addOrder(order);
+		for (Order o : orders) {
+			criteria.addOrder(o);
 		}
 		return getTemplate().findByCriteria(criteria);
 	}
